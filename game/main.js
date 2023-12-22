@@ -50,14 +50,18 @@ board[21]   = "                <! . . . . . . . . . .!>\n\r";
 board[22]   = "                <!====================!>\n\r";
 board[23]   = "                  \\/\\/\\/\\/\\/\\/\\/\\/\\/\\/";
 
+/**
+ * Main function for running the game
+ * @param {*} xterm - xterm instance
+ */
 function main(xterm) {
     updateScreen(xterm, board);
 }
 
 /**
- * 
- * @param {*} xterm 
- * @param {*} board 
+ * Prints new game-state/board-snapshot to the terminal
+ * @param {*} xterm - xterm instance passed from main function
+ * @param {*} board - string array representing the tetris board
  */
 function updateScreen(xterm, board) {
     for (let i = 0; i < board.length; i++) {
