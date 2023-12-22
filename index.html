@@ -10,6 +10,12 @@
   <body>
     <h1>Hello world</h1>
     <div id="terminal"></div>
-    <script src="terminal-main.js"></script>
+    <script>
+      var xterm = new Terminal();
+      xterm.open(document.getElementById('terminal'));
+      xterm.resize(34, 22);
+      xterm.write("\x1B[0;32m");   // Note: colors dictated by ANSI scheme: https://bixense.com/clicolors/ 
+      xterm.write("fuck fuck fuck")
+    </script>
   </body>
 </html>
