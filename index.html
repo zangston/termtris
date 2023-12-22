@@ -34,7 +34,7 @@
     <script>
       var xterm = new Terminal();
       xterm.open(document.getElementById('terminal'));
-      xterm.resize(70, 24);
+      xterm.resize(70, 25);
       xterm.write("\x1B[0;32m");   // Note: colors dictated by ANSI scheme: https://bixense.com/clicolors/
 
       main(xterm);
