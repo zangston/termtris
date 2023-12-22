@@ -18,12 +18,20 @@
       href="https://unpkg.com/xterm/css/xterm.css"
     />
     <script src="https://unpkg.com/xterm/lib/xterm.js"></script>
+    <script src="functionOne.js"></script>
   </head>
 
   <body>
     <h1>xtermtris</h1>
 
     <div id="terminal"></div>
-    <script src="https://zangston.github.io/xtermtris/terminal-main.js"></script>
+    <script>
+      var xterm = new Terminal();
+      xterm.open(document.getElementById('terminal'));
+      xterm.resize(34, 26);
+      xterm.write("\x1B[0;32m");   // Note: colors dictated by ANSI scheme: https://bixense.com/clicolors/
+
+      functionOne();
+    </script>
   </body>
 </html>
