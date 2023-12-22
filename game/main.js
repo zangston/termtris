@@ -49,12 +49,17 @@ board[20]   = "                <! . . . . . . . . . .!>\n\r";
 board[21]   = "                <!====================!>\n\r";
 board[22]   = "                  \\/\\/\\/\\/\\/\\/\\/\\/\\/\\/";
 
+
+// Dictates speed at which board is printed line-by-line
+var printSpeed = 20;
+
 /**
  * Main function for running the game
  * @param {*} xterm - xterm instance
  */
 function main(xterm) {
-    updateScreen(xterm, board);
+    startUpAnimation(xterm, board);
+    // updateScreen(xterm, board);
 }
 
 /**
@@ -71,4 +76,27 @@ function updateScreen(xterm, board) {
     }
 
     xterm.write("\n\r");    // bottom margin line
+}
+
+/**
+ * Prints new game-state/board-snapshot to the terminal with a loading effect
+ * @param {*} xterm - xterm instance passed from main function
+ * @param {*} board - string array representing the tetris board
+ */
+function startUpAnimation(xterm, board) {
+    xterm.write("\n\r"); // top margin line
+
+    let i = 0;
+
+    function printLine() {
+        if (i < board.length) {
+            xterm.write(board[i]);
+            i++;
+            setTimeout(printLine, printSpeed); // Adjust the delay (in milliseconds) as needed
+        } else {
+            xterm.write("\n\r"); // bottom margin line
+        }
+    }
+
+    printLine();
 }
