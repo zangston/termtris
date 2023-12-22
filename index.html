@@ -9,6 +9,11 @@
     width: 675px;
     margin: auto;
   }
+
+  #footer-text {
+    text-align: right;
+  }
+
 </style>
 
 <!doctype html>
@@ -25,7 +30,6 @@
 
   <body>
     <h1>xtermtris</h1>
-
     <div id="terminal"></div>
     <script>
       var xterm = new Terminal();
@@ -36,4 +40,11 @@
       main(xterm);
     </script>
   </body>
+  <p id="footer-text">
+      Tetris, built from scratch using Xterm.js
+      <br>
+      Built by Winston Zhang
+      <br>
+      Work in progress!
+  </p>
 </html>
