@@ -18,6 +18,7 @@
       href="https://unpkg.com/xterm/css/xterm.css"
     />
     <script src="https://unpkg.com/xterm/lib/xterm.js"></script>
+    <script src="./terminal-main.js"></script>
   </head>
 
   <body>
@@ -25,10 +26,7 @@
 
     <div id="terminal"></div>
     <script>
-      var xterm = new Terminal();
-      xterm.open(document.getElementById('terminal'));
-      xterm.resize(34, 26);
-      xterm.write("\x1B[0;32m");   // Note: colors dictated by ANSI scheme: https://bixense.com/clicolors/ 
+      terminalMain();
     </script>
   </body>
 </html>
