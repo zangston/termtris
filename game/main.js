@@ -51,7 +51,7 @@ board[22]   = "                  \\/\\/\\/\\/\\/\\/\\/\\/\\/\\/";
 
 
 // Dictates speed at which board is printed line-by-line
-var printSpeed = 20;
+var printSpeed = 50;
 
 /**
  * Main function for running the game
