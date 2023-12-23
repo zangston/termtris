@@ -57,9 +57,23 @@ var printSpeed = 50;
  * Main function for running the game
  * @param {*} xterm - xterm instance
  */
-function main(xterm) {
-    startUpAnimation(xterm, board);
+async function main(xterm) {
+    await startUpAnimation(xterm, board);
+    //setTimeout(1200);
     // updateScreen(xterm, board);
+
+    setTimeout(() => {
+        const block = new Block(0, 1);
+        console.log(block.x);
+        console.log(block.y);
+
+        console.log(board[block.x]);
+        board[block.x] = setCharAt(board[block.x], 18 + block.x, "[");
+        board[block.x] = setCharAt(board[block.x], 19 + block.x, "]");
+        console.log(board[block.x]);
+
+        updateScreen(xterm, board);
+    }, 1600);
 }
 
 /**
@@ -69,6 +83,7 @@ function main(xterm) {
  */
 function updateScreen(xterm, board) {
     
+    xterm.write("\n\r");    // top margin line
     xterm.write("\n\r");    // top margin line
 
     for (let i = 0; i < board.length; i++) {
@@ -83,7 +98,8 @@ function updateScreen(xterm, board) {
  * @param {*} xterm - xterm instance passed from main function
  * @param {*} board - string array representing the tetris board
  */
-function startUpAnimation(xterm, board) {
+async function startUpAnimation(xterm, board) {
+    xterm.write("\n\r"); // top margin line
     xterm.write("\n\r"); // top margin line
 
     let i = 0;
@@ -99,4 +115,16 @@ function startUpAnimation(xterm, board) {
     }
 
     printLine();
+}
+
+/**
+ * 
+ * @param {*} str 
+ * @param {*} index 
+ * @param {*} chr 
+ * @returns 
+ */
+function setCharAt(str,index,chr) {
+    if(index > str.length-1) return str;
+    return str.substring(0,index) + chr + str.substring(index+1);
 }

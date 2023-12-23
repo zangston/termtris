@@ -31,7 +31,9 @@
     />
     <script src="https://unpkg.com/xterm/lib/xterm.js"></script>
     
+    <script src="./game/singleBlock.js"></script>
     <script src="./game/main.js"></script>
+
   </head>
 
   <h1 id="title-text">xtermtris</h1>
@@ -42,7 +44,7 @@
     <script>
       var xterm = new Terminal();
       xterm.open(document.getElementById('terminal'));
-      xterm.resize(73, 25);
+      xterm.resize(73, 26);
       xterm.write("\x1B[0;32m");   // Note: colors dictated by ANSI scheme: https://bixense.com/clicolors/
 
       main(xterm);
