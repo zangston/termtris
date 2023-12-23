@@ -73,7 +73,7 @@ async function main(xterm) {
         console.log(board[block.x]);
 
         updateScreen(xterm, board);
-    }, 1400);
+    }, 1600);
 }
 
 /**
@@ -83,6 +83,7 @@ async function main(xterm) {
  */
 function updateScreen(xterm, board) {
     
+    xterm.write("\n\r");    // top margin line
     xterm.write("\n\r");    // top margin line
 
     for (let i = 0; i < board.length; i++) {
@@ -98,6 +99,7 @@ function updateScreen(xterm, board) {
  * @param {*} board - string array representing the tetris board
  */
 async function startUpAnimation(xterm, board) {
+    xterm.write("\n\r"); // top margin line
     xterm.write("\n\r"); // top margin line
 
     let i = 0;
