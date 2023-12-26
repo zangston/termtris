@@ -64,32 +64,10 @@ async function main(xterm) {
 
     setTimeout(() => {
         const block = new Block(0, 1);
-        console.log(block.x);
-        console.log(block.y);
-
-        console.log(board[block.x]);
         board[block.x] = setBlockAt(board[block.x], 18 + block.x);
-        console.log(board[block.x]);
 
         updateScreen(xterm, board);
     }, 1600);
-}
-
-/**
- * Prints new game-state/board-snapshot to the terminal
- * @param {*} xterm - xterm instance passed from main function
- * @param {*} board - string array representing the tetris board
- */
-function updateScreen(xterm, board) {
-    
-    xterm.write("\n\r");    // top margin line
-    xterm.write("\n\r");    // top margin line
-
-    for (let i = 0; i < board.length; i++) {
-        xterm.write(board[i]);
-    }
-
-    xterm.write("\n\r");    // bottom margin line
 }
 
 /**
@@ -125,4 +103,21 @@ async function startUpAnimation(xterm, board) {
 function setBlockAt(str, index) {
     if(index > str.length-1) return str;
     return str.substring(0,index) + "[]" + str.substring(index+2);
+}
+
+/**
+ * Prints new game-state/board-snapshot to the terminal
+ * @param {*} xterm - xterm instance passed from main function
+ * @param {*} board - string array representing the tetris board
+ */
+function updateScreen(xterm, board) {
+    
+    xterm.write("\n\r");    // top margin line
+    xterm.write("\n\r");    // top margin line
+
+    for (let i = 0; i < board.length; i++) {
+        xterm.write(board[i]);
+    }
+
+    xterm.write("\n\r");    // bottom margin line
 }
