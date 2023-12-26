@@ -53,8 +53,8 @@ board[22]   = "                  \\/\\/\\/\\/\\/\\/\\/\\/\\/\\/";
 // Number of characters in row string until left edge of the board
 var boardOffset = 18;
 
-// Dictates speed at which board is printed line-by-line
-var printSpeed = 50;
+// Dictates speed at which board is printed line-by-line during startup animation
+var startupPrintSpeed = 100;
 
 /**
  * Main function for running the game
@@ -67,7 +67,7 @@ async function main(xterm) {
         spawnBlock();
 
         updateScreen(xterm);
-    }, 1600);
+    }, startupPrintSpeed * 35);
 }
 
 /**
@@ -84,7 +84,7 @@ async function startUpAnimation(xterm) {
         if (i < board.length) {
             xterm.write(board[i]);
             i++;
-            setTimeout(printLine, printSpeed); // Adjust the delay (in milliseconds) as needed
+            setTimeout(printLine, startupPrintSpeed); // Adjust the delay (in milliseconds) as needed
         } else {
             xterm.write("\n\r"); // bottom margin line
         }
