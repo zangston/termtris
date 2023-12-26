@@ -68,8 +68,7 @@ async function main(xterm) {
         console.log(block.y);
 
         console.log(board[block.x]);
-        board[block.x] = setCharAt(board[block.x], 18 + block.x, "[");
-        board[block.x] = setCharAt(board[block.x], 19 + block.x, "]");
+        board[block.x] = setBlockAt(board[block.x], 18 + block.x);
         console.log(board[block.x]);
 
         updateScreen(xterm, board);
@@ -124,7 +123,7 @@ async function startUpAnimation(xterm, board) {
  * @param {*} chr 
  * @returns 
  */
-function setCharAt(str,index,chr) {
+function setBlockAt(str, index) {
     if(index > str.length-1) return str;
-    return str.substring(0,index) + chr + str.substring(index+1);
+    return str.substring(0,index) + "[]" + str.substring(index+2);
 }
