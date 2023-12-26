@@ -50,6 +50,9 @@ board[21]   = "                <!====================!>                         
 board[22]   = "                  \\/\\/\\/\\/\\/\\/\\/\\/\\/\\/";
 
 
+// Number of characters in row string until left edge of the board
+var boardOffset = 18;
+
 // Dictates speed at which board is printed line-by-line
 var printSpeed = 50;
 
@@ -63,8 +66,7 @@ async function main(xterm) {
     // updateScreen(xterm, board);
 
     setTimeout(() => {
-        const block = new Block(0, 1);
-        board[block.x] = setBlockAt(board[block.x], 18 + block.x);
+        spawnBlock();
 
         updateScreen(xterm, board);
     }, 1600);
@@ -94,15 +96,20 @@ async function startUpAnimation(xterm, board) {
     printLine();
 }
 
+function spawnBlock() {
+    const block = new Block(0, 5);
+    board[block.x] = setBlockOnBoard(board[block.x], boardOffset + block.y * 2);
+}
+
 /**
  * Inserts a [] in the board given a row (str) and "column" (index)
  * @param {*} str - str representing a row in the board
  * @param {*} index - index value representing column plus offset
  * @returns - updated row string for board
  */
-function setBlockAt(str, index) {
-    if(index > str.length-1) return str;
-    return str.substring(0,index) + "[]" + str.substring(index+2);
+function setBlockOnBoard(str, index) {
+    if(index > str.length - 1) return str;
+    return str.substring(0, index) + "[]" + str.substring(index + 2);
 }
 
 /**
