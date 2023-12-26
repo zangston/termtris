@@ -1,7 +1,7 @@
-//Single Block
-
-
+// Single Block
 class Block{
+
+    // block coordinates
     x;
     y;
     
