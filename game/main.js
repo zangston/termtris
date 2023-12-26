@@ -59,7 +59,7 @@ var printSpeed = 50;
  */
 async function main(xterm) {
     await startUpAnimation(xterm, board);
-    //setTimeout(1200);
+    // setTimeout(1200);
     // updateScreen(xterm, board);
 
     setTimeout(() => {
@@ -117,11 +117,10 @@ async function startUpAnimation(xterm, board) {
 }
 
 /**
- * 
- * @param {*} str 
- * @param {*} index 
- * @param {*} chr 
- * @returns 
+ * Inserts a [] in the board given a row (str) and "column" (index)
+ * @param {*} str - str representing a row in the board
+ * @param {*} index - index value representing column plus offset
+ * @returns - updated row string for board
  */
 function setBlockAt(str, index) {
     if(index > str.length-1) return str;
