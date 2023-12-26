@@ -61,23 +61,20 @@ var printSpeed = 50;
  * @param {*} xterm - xterm instance
  */
 async function main(xterm) {
-    await startUpAnimation(xterm, board);
-    // setTimeout(1200);
-    // updateScreen(xterm, board);
+    await startUpAnimation(xterm);
 
     setTimeout(() => {
         spawnBlock();
 
-        updateScreen(xterm, board);
+        updateScreen(xterm);
     }, 1600);
 }
 
 /**
  * Prints new game-state/board-snapshot to the terminal with a loading effect
  * @param {*} xterm - xterm instance passed from main function
- * @param {*} board - string array representing the tetris board
  */
-async function startUpAnimation(xterm, board) {
+async function startUpAnimation(xterm) {
     xterm.write("\n\r"); // top margin line
     xterm.write("\n\r"); // top margin line
 
@@ -96,6 +93,9 @@ async function startUpAnimation(xterm, board) {
     printLine();
 }
 
+/**
+ * Spawns a new block at center of the top of the board
+ */
 function spawnBlock() {
     const block = new Block(0, 5);
     board[block.x] = setBlockOnBoard(board[block.x], boardOffset + block.y * 2);
@@ -117,7 +117,7 @@ function setBlockOnBoard(str, index) {
  * @param {*} xterm - xterm instance passed from main function
  * @param {*} board - string array representing the tetris board
  */
-function updateScreen(xterm, board) {
+function updateScreen(xterm) {
     
     xterm.write("\n\r");    // top margin line
     xterm.write("\n\r");    // top margin line
