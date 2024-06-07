@@ -1,5 +1,3 @@
-import { startUpAnimation } from '/.startUpAnimation.js';
-
 // Game board represented as an array of strings, one string per line
 // Example board:
 /*
@@ -63,13 +61,36 @@ var startupPrintSpeed = 100;
  * @param {*} xterm - xterm instance
  */
 async function main(xterm) {
-    await startUpAnimation(xterm, board, startupPrintSpeed);
+    await startUpAnimation(xterm);
 
     setTimeout(() => {
         spawnBlock();
 
         updateScreen(xterm);
     }, startupPrintSpeed * 35);
+}
+
+/**
+ * Prints new game-state/board-snapshot to the terminal with a loading effect
+ * @param {*} xterm - xterm instance passed from main function
+ */
+async function startUpAnimation(xterm) {
+    xterm.write("\n\r"); // top margin line
+    xterm.write("\n\r"); // top margin line
+
+    let i = 0;
+
+    function printLine() {
+        if (i < board.length) {
+            xterm.write(board[i]);
+            i++;
+            setTimeout(printLine, startupPrintSpeed); // Adjust the delay (in milliseconds) as needed
+        } else {
+            xterm.write("\n\r"); // bottom margin line
+        }
+    }
+
+    printLine();
 }
 
 /**
